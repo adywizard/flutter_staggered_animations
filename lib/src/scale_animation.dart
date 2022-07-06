@@ -31,7 +31,7 @@ class ScaleAnimation extends StatelessWidget {
     this.curve = Curves.ease,
     this.scale = 0.0,
     required this.child,
-  })   : assert(scale >= 0.0),
+  })  : assert(scale >= 0.0),
         super(key: key);
 
   @override
@@ -44,7 +44,7 @@ class ScaleAnimation extends StatelessWidget {
   }
 
   Widget _landingAnimation(Animation<double> animation) {
-    final _landingAnimation = Tween<double>(begin: scale, end: 1.0).animate(
+    final landingAnimation = Tween<double>(begin: scale, end: 1.0).animate(
       CurvedAnimation(
         parent: animation,
         curve: Interval(0.0, 1.0, curve: curve),
@@ -52,7 +52,7 @@ class ScaleAnimation extends StatelessWidget {
     );
 
     return Transform.scale(
-      scale: _landingAnimation.value,
+      scale: landingAnimation.value,
       child: child,
     );
   }

@@ -52,7 +52,7 @@ class FlipAnimation extends StatelessWidget {
   }
 
   Widget _flipAnimation(Animation<double> animation) {
-    final _flipAnimation = Tween<double>(begin: 0, end: 1).animate(
+    final flipAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
         parent: animation,
         curve: Interval(0.0, 1.0, curve: curve),
@@ -60,7 +60,7 @@ class FlipAnimation extends StatelessWidget {
     );
 
     Matrix4 _computeTransformationMatrix() {
-      var radians = (1 - _flipAnimation.value) * pi / 2;
+      var radians = (1 - flipAnimation.value) * pi / 2;
 
       switch (flipAxis) {
         case FlipAxis.y:

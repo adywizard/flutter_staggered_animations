@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'animation_limiter.dart';
 
-typedef Builder = Widget Function(
-    BuildContext context, AnimationController? animationController);
+typedef Builder = Widget Function(BuildContext context, AnimationController? animationController);
 
 class AnimationExecutor extends StatefulWidget {
   final Duration duration;
@@ -19,11 +18,10 @@ class AnimationExecutor extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _AnimationExecutorState createState() => _AnimationExecutorState();
+  AnimationExecutorState createState() => AnimationExecutorState();
 }
 
-class _AnimationExecutorState extends State<AnimationExecutor>
-    with SingleTickerProviderStateMixin {
+class AnimationExecutorState extends State<AnimationExecutor> with SingleTickerProviderStateMixin {
   AnimationController? _animationController;
   Timer? _timer;
 
@@ -31,8 +29,7 @@ class _AnimationExecutorState extends State<AnimationExecutor>
   void initState() {
     super.initState();
 
-    _animationController =
-        AnimationController(duration: widget.duration, vsync: this);
+    _animationController = AnimationController(duration: widget.duration, vsync: this);
 
     if (AnimationLimiter.shouldRunAnimation(context) ?? true) {
       _timer = Timer(widget.delay, () => _animationController!.forward());
